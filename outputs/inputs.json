@@ -1,0 +1,75 @@
+{
+  "input_sequences": [
+    {
+      "name": "tracks_loose202102NoIpCuts_absD0DescendingSort",
+      "variables": [
+        {
+          "name": "z0RelativeToBeamspot",
+          "offset": 0.0,
+          "scale": 1.0
+        },
+        {
+          "name": "log_pt",
+          "offset": 0.0,
+          "scale": 1.0
+        },
+        {
+          "name": "d0",
+          "offset": 0.0,
+          "scale": 1.0
+        },
+        {
+          "name": "deta",
+          "offset": 0.0,
+          "scale": 1.0
+        },
+        {
+          "name": "dphi",
+          "offset": 0.0,
+          "scale": 1.0
+        },
+        {
+          "name": "chiSquared",
+          "offset": 0.0,
+          "scale": 1.0
+        },
+        {
+          "name": "numberDoF",
+          "offset": 0.0,
+          "scale": 1.0
+        },
+        {
+          "name": "qOverP",
+          "offset": 0.0,
+          "scale": 1.0
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "name": "btagging",
+      "variables": [
+        {
+          "name": "eta",
+          "offset": 0.0,
+          "scale": 1.0
+        },
+        {
+          "name": "log_pt",
+          "offset": 0.0,
+          "scale": 1.0
+        }
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "labels": [
+        "z",
+        "negLogSigma2"
+      ],
+      "name": "dipz"
+    }
+  ]
+}
