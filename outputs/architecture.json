@@ -1,7 +1,7 @@
 {
   "class_name": "Functional",
   "config": {
-    "name": "model_1",
+    "name": "model",
     "layers": [
       {
         "class_name": "InputLayer",
@@ -14,24 +14,24 @@
           "dtype": "float32",
           "sparse": false,
           "ragged": false,
-          "name": "input_3"
+          "name": "input_1"
         },
-        "name": "input_3",
+        "name": "input_1",
         "inbound_nodes": []
       },
       {
         "class_name": "Masking",
         "config": {
-          "name": "masking_1",
+          "name": "masking",
           "trainable": true,
           "dtype": "float32",
           "mask_value": 999
         },
-        "name": "masking_1",
+        "name": "masking",
         "inbound_nodes": [
           [
             [
-              "input_3",
+              "input_1",
               0,
               0,
               {}
@@ -49,21 +49,21 @@
           "dtype": "float32",
           "sparse": false,
           "ragged": false,
-          "name": "input_4"
+          "name": "input_2"
         },
-        "name": "input_4",
+        "name": "input_2",
         "inbound_nodes": []
       },
       {
         "class_name": "TimeDistributed",
         "config": {
-          "name": "time_distributed_4",
+          "name": "time_distributed",
           "trainable": true,
           "dtype": "float32",
           "layer": {
             "class_name": "Dense",
             "config": {
-              "name": "dense_17",
+              "name": "dense_4",
               "trainable": true,
               "dtype": "float32",
               "units": 16,
@@ -87,11 +87,11 @@
             }
           }
         },
-        "name": "time_distributed_4",
+        "name": "time_distributed",
         "inbound_nodes": [
           [
             [
-              "masking_1",
+              "masking",
               0,
               0,
               {}
@@ -102,7 +102,7 @@
       {
         "class_name": "Dense",
         "config": {
-          "name": "dense_13",
+          "name": "dense",
           "trainable": true,
           "dtype": "float32",
           "units": 32,
@@ -124,11 +124,11 @@
           "kernel_constraint": null,
           "bias_constraint": null
         },
-        "name": "dense_13",
+        "name": "dense",
         "inbound_nodes": [
           [
             [
-              "input_4",
+              "input_2",
               0,
               0,
               {}
@@ -139,13 +139,13 @@
       {
         "class_name": "TimeDistributed",
         "config": {
-          "name": "time_distributed_5",
+          "name": "time_distributed_1",
           "trainable": true,
           "dtype": "float32",
           "layer": {
             "class_name": "Dense",
             "config": {
-              "name": "dense_18",
+              "name": "dense_5",
               "trainable": true,
               "dtype": "float32",
               "units": 16,
@@ -169,11 +169,11 @@
             }
           }
         },
-        "name": "time_distributed_5",
+        "name": "time_distributed_1",
         "inbound_nodes": [
           [
             [
-              "time_distributed_4",
+              "time_distributed",
               0,
               0,
               {}
@@ -184,7 +184,7 @@
       {
         "class_name": "Dense",
         "config": {
-          "name": "dense_14",
+          "name": "dense_1",
           "trainable": true,
           "dtype": "float32",
           "units": 32,
@@ -206,11 +206,11 @@
           "kernel_constraint": null,
           "bias_constraint": null
         },
-        "name": "dense_14",
+        "name": "dense_1",
         "inbound_nodes": [
           [
             [
-              "dense_13",
+              "dense",
               0,
               0,
               {}
@@ -221,13 +221,13 @@
       {
         "class_name": "TimeDistributed",
         "config": {
-          "name": "time_distributed_6",
+          "name": "time_distributed_2",
           "trainable": true,
           "dtype": "float32",
           "layer": {
             "class_name": "Dense",
             "config": {
-              "name": "dense_19",
+              "name": "dense_6",
               "trainable": true,
               "dtype": "float32",
               "units": 16,
@@ -251,11 +251,11 @@
             }
           }
         },
-        "name": "time_distributed_6",
+        "name": "time_distributed_2",
         "inbound_nodes": [
           [
             [
-              "time_distributed_5",
+              "time_distributed_1",
               0,
               0,
               {}
@@ -266,7 +266,7 @@
       {
         "class_name": "Dense",
         "config": {
-          "name": "dense_15",
+          "name": "dense_2",
           "trainable": true,
           "dtype": "float32",
           "units": 32,
@@ -288,11 +288,11 @@
           "kernel_constraint": null,
           "bias_constraint": null
         },
-        "name": "dense_15",
+        "name": "dense_2",
         "inbound_nodes": [
           [
             [
-              "dense_14",
+              "dense_1",
               0,
               0,
               {}
@@ -303,13 +303,13 @@
       {
         "class_name": "TimeDistributed",
         "config": {
-          "name": "time_distributed_7",
+          "name": "time_distributed_3",
           "trainable": true,
           "dtype": "float32",
           "layer": {
             "class_name": "Dense",
             "config": {
-              "name": "dense_20",
+              "name": "dense_7",
               "trainable": true,
               "dtype": "float32",
               "units": 16,
@@ -333,11 +333,11 @@
             }
           }
         },
-        "name": "time_distributed_7",
+        "name": "time_distributed_3",
         "inbound_nodes": [
           [
             [
-              "time_distributed_6",
+              "time_distributed_2",
               0,
               0,
               {}
@@ -348,7 +348,7 @@
       {
         "class_name": "Dense",
         "config": {
-          "name": "dense_16",
+          "name": "dense_3",
           "trainable": true,
           "dtype": "float32",
           "units": 32,
@@ -370,11 +370,11 @@
           "kernel_constraint": null,
           "bias_constraint": null
         },
-        "name": "dense_16",
+        "name": "dense_3",
         "inbound_nodes": [
           [
             [
-              "dense_15",
+              "dense_2",
               0,
               0,
               {}
@@ -385,15 +385,15 @@
       {
         "class_name": "Sum",
         "config": {
-          "name": "sum_1",
+          "name": "sum",
           "trainable": true,
           "dtype": "float32"
         },
-        "name": "sum_1",
+        "name": "sum",
         "inbound_nodes": [
           [
             [
-              "time_distributed_7",
+              "time_distributed_3",
               0,
               0,
               {}
@@ -404,22 +404,22 @@
       {
         "class_name": "Concatenate",
         "config": {
-          "name": "concatenate_1",
+          "name": "concatenate",
           "trainable": true,
           "dtype": "float32",
           "axis": -1
         },
-        "name": "concatenate_1",
+        "name": "concatenate",
         "inbound_nodes": [
           [
             [
-              "dense_16",
+              "dense_3",
               0,
               0,
               {}
             ],
             [
-              "sum_1",
+              "sum",
               0,
               0,
               {}
@@ -430,7 +430,7 @@
       {
         "class_name": "Dense",
         "config": {
-          "name": "dense_21",
+          "name": "dense_8",
           "trainable": true,
           "dtype": "float32",
           "units": 32,
@@ -452,11 +452,11 @@
           "kernel_constraint": null,
           "bias_constraint": null
         },
-        "name": "dense_21",
+        "name": "dense_8",
         "inbound_nodes": [
           [
             [
-              "concatenate_1",
+              "concatenate",
               0,
               0,
               {}
@@ -467,7 +467,7 @@
       {
         "class_name": "Dense",
         "config": {
-          "name": "dense_22",
+          "name": "dense_9",
           "trainable": true,
           "dtype": "float32",
           "units": 32,
@@ -489,11 +489,11 @@
           "kernel_constraint": null,
           "bias_constraint": null
         },
-        "name": "dense_22",
+        "name": "dense_9",
         "inbound_nodes": [
           [
             [
-              "dense_21",
+              "dense_8",
               0,
               0,
               {}
@@ -504,7 +504,7 @@
       {
         "class_name": "Dense",
         "config": {
-          "name": "dense_23",
+          "name": "dense_10",
           "trainable": true,
           "dtype": "float32",
           "units": 32,
@@ -526,11 +526,11 @@
           "kernel_constraint": null,
           "bias_constraint": null
         },
-        "name": "dense_23",
+        "name": "dense_10",
         "inbound_nodes": [
           [
             [
-              "dense_22",
+              "dense_9",
               0,
               0,
               {}
@@ -541,7 +541,7 @@
       {
         "class_name": "Dense",
         "config": {
-          "name": "dense_24",
+          "name": "dense_11",
           "trainable": true,
           "dtype": "float32",
           "units": 32,
@@ -563,11 +563,11 @@
           "kernel_constraint": null,
           "bias_constraint": null
         },
-        "name": "dense_24",
+        "name": "dense_11",
         "inbound_nodes": [
           [
             [
-              "dense_23",
+              "dense_10",
               0,
               0,
               {}
@@ -578,7 +578,7 @@
       {
         "class_name": "Dense",
         "config": {
-          "name": "dense_25",
+          "name": "dense_12",
           "trainable": true,
           "dtype": "float32",
           "units": 2,
@@ -600,11 +600,11 @@
           "kernel_constraint": null,
           "bias_constraint": null
         },
-        "name": "dense_25",
+        "name": "dense_12",
         "inbound_nodes": [
           [
             [
-              "dense_24",
+              "dense_11",
               0,
               0,
               {}
@@ -615,19 +615,19 @@
     ],
     "input_layers": [
       [
-        "input_4",
+        "input_2",
         0,
         0
       ],
       [
-        "input_3",
+        "input_1",
         0,
         0
       ]
     ],
     "output_layers": [
       [
-        "dense_25",
+        "dense_12",
         0,
         0
       ]
