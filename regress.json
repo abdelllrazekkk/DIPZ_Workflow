@@ -1,0 +1,37 @@
+{ "targetfeatnames" : [ "primaryVertexDetectorZ" ]
+, "jetfeatnames" : [ "eta" , "pt" ]
+, "trackfeatnames" :
+  [ "z0RelativeToBeamspot"
+  , "pt"
+  , "d0"
+  , "deta"
+  , "dphi"
+  , "chiSquared"
+  , "numberDoF"
+  , "qOverP"
+  ]
+
+, "alltrackfeatnames" :
+  [ "chiSquared"
+  , "numberDoF"
+  , "qOverP"
+  , "d0"
+  , "z0RelativeToBeamspot"
+  , "pt"
+  , "eta"
+  , "dphi"
+  ]
+
+, "jetnodes" : [ 32 , 32 , 32 , 32 ]
+, "tracknodes" : [ 16 , 16 , 16 , 16 ]
+
+, "lr" : 1e-4
+, "outdir" : "tb"
+, "device" : "cpu"
+
+, "batch_size" : 32
+, "epoch_size" : 2048
+, "number_epochs" : 99999
+, "fnames" : ["./data/user.viruelas.26543689._000001.output.h5"]
+, "valid_fnames" : ["./data/user.viruelas.26543689._000002.output.h5"]
+}
