@@ -1,5 +1,5 @@
 { "targetfeatnames" : [ "primaryVertexDetectorZ" ]
-, "jetfeatnames" : [ "eta" , "pt" ]
+, "jetfeatnames" : [ "eta" , "pt"]
 , "trackfeatnames" :
   [ "z0RelativeToBeamspot"
   , "pt"
