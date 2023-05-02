@@ -1,5 +1,5 @@
 # this file takes a subset of the data of the following size and creates a new file
-SUBSET_SIZE = 1000
+SUBSET_SIZE = 1024
 
 import h5py
 import numpy as np

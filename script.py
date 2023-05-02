@@ -45,6 +45,7 @@ from keras.layers import (
     Dense, TimeDistributed, Input, Concatenate, Masking
 )
 from keras.utils.generic_utils import CustomMaskWarning
+from sklearn.model_selection import train_test_split
 
 # the data libs
 import h5py
@@ -56,15 +57,33 @@ from pathlib import Path
 import warnings
 
 # %%
+np.random.seed(2023)
+
+# Set these manually to run either in the notebook
+NOTEBOOK_TRAIN = False
+NOTEBOOK_EVAL = True
+
 # DATA_FILEPATH = "./data/data.h5"
 DATA_FILEPATH = "./data/subset.h5"    
 
 model_name = "regress" # Original config file
+TRAIN = False
+EVAL = False
 args = sys.argv[1:]
-opts, args = getopt.getopt(args, "m:f:", "model=")
+opts, args = getopt.getopt(args, "m:f:te", ["model=", "train", "eval"])
 for opt, arg in opts:
     if opt in ['-m', '--model']:
         model_name = arg
+    elif opt in ['-t', '--train']:
+        TRAIN = True
+    elif opt in ['-e', '--eval']:
+        EVAL = True
+    elif opt in ['-f']:
+        TRAIN = NOTEBOOK_TRAIN
+        EVAL = NOTEBOOK_EVAL
+
+print(f"Train: {TRAIN}")
+print(f"Eval: {EVAL}")
 
 CONFIG_FILEPATH = f"./config/{model_name}.json"
 OUTPUT_FILEPATH = f"./models/{model_name}"
@@ -83,7 +102,7 @@ def get_config(config_path):
         targetfeatnames=config["targetfeatnames"],
         batch_size=config["batch_size"],
         epoch_size=config["epoch_size"],
-        number_epochs=config["number_epochs"],
+        num_epochs=config["num_epochs"],
         learning_rate=config["lr"],
         tracknodes=config['tracknodes'],
         jetnodes=config['jetnodes'],
@@ -210,15 +229,45 @@ def save_model(model, output_dir, inputs):
     with open(output_dir / 'inputs.json', 'w') as inputs_file:
         json.dump(inputs, inputs_file, indent=2)
 
+def split_data(jet_inputs, track_inputs, targets):
+    assert jet_inputs.shape[0] == track_inputs.shape[0] == targets.shape[0]
+
+    return train_test_split(jet_inputs, track_inputs, targets,
+                            train_size = 0.75, random_state=2023)
+
+# def eval(model, )
+
 # A function that runs the neural network training and saves the weights
 def run(config_filepath, h5_filepath, num_epochs = 10):
     mask_value = MASK_VALUE
     config = get_config(config_filepath)
     model = get_model(config, mask_value=mask_value)
     jet_inputs, track_inputs, targets = get_dataset(h5_filepath, config, mask_value)
-    model.fit([jet_inputs, track_inputs], targets, epochs=num_epochs)
-    inputs = get_inputs(config['jetfeatnames'], config['trackfeatnames'])
-    save_model(model, inputs=inputs, output_dir=Path(OUTPUT_FILEPATH))
+    jet_inputs_train, jet_inputs_test, track_inputs_train, track_inputs_test, targets_train, targets_test = \
+        split_data(jet_inputs, track_inputs, targets)
+    
+    if TRAIN:
+        model.fit([jet_inputs_train, track_inputs_train], targets_train,
+                batch_size=config["batch_size"],
+                epochs=config["num_epochs"])
+        inputs = get_inputs(config['jetfeatnames'], config['trackfeatnames'])
+        save_model(model, inputs=inputs, output_dir=Path(OUTPUT_FILEPATH))
+    else:
+        model.load_weights(Path(OUTPUT_FILEPATH) / 'weights.h5')
+
+    if EVAL:
+        # Using RMSE for now
+        pred = model.predict([jet_inputs_test, track_inputs_test])
+        z = pred[:,0]
+        zhat = targets_test[:,0]
+
+        # Not sure what to do with these
+        # widths = np.sqrt(np.exp(-pred[:,1])) # Standard deviation
+        # sigma = (z - zhat) / widths
+        result = K.sqrt(K.mean(K.square(z - zhat))).numpy()
+        print(f"RMSE of predictions: {str(round(result, 4))}")
+
+
 BEGIN = time.time()
 print(f"[{datetime.datetime.now().strftime(f'%H:%M:%S')}] Start", flush=True)
 
