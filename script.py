@@ -59,9 +59,9 @@ import warnings
 # DATA_FILEPATH = "./data/data.h5"
 DATA_FILEPATH = "./data/subset.h5"    
 
+model_name = "regress" # Original config file
 args = sys.argv[1:]
-
-opts, args = getopt.getopt(args, "m:", "model=")
+opts, args = getopt.getopt(args, "m:f:", "model=")
 for opt, arg in opts:
     if opt in ['-m', '--model']:
         model_name = arg
@@ -150,7 +150,6 @@ def get_dataset(h5_filepath, config, mask_value, take_first=False):
 
     with h5py.File(h5_filepath) as h5file:
         # get track array
-        [print(item) for item in h5file.items()]
         td = h5file['fs_tracks_simple_ip']
         tfn = config['trackfeatnames']
         # we can pass through NaNs here
