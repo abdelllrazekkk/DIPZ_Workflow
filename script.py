@@ -8,17 +8,15 @@ Train dipz with keras
 #'Take only this many inputs (with no args %(const)s)'
 _h_take_first = 'Take only this many inputs (with no args %(const)s)'
 
-# DATA_FILEPATH = "./data/data.h5"
-DATA_FILEPATH = "./data/subset.h5"
-CONFIG_FILEPATH = "./regress.json"
-
-# TODO: clean up these hardcoded values
-MASK_VALUE = 999
-MERGED_NODES = [32]*4
-
+import sys
+import getopt
 import os
 import time
 import datetime
+import platform
+
+print(f"Python Platform: {platform.platform()}")
+print(f"Python {sys.version}")
 
 # local libs
 from layers import Sum
@@ -56,6 +54,24 @@ import json
 from argparse import ArgumentParser
 from pathlib import Path
 import warnings
+
+# %%
+# DATA_FILEPATH = "./data/data.h5"
+DATA_FILEPATH = "./data/subset.h5"    
+
+args = sys.argv[1:]
+
+opts, args = getopt.getopt(args, "m:", "model=")
+for opt, arg in opts:
+    if opt in ['-m', '--model']:
+        model_name = arg
+
+CONFIG_FILEPATH = f"./config/{model_name}.json"
+OUTPUT_FILEPATH = f"./models/{model_name}"
+
+# TODO: clean up these hardcoded values
+MASK_VALUE = 999
+MERGED_NODES = [32]*4
 
 # A function to define and gets the config file 
 def get_config(config_path):
@@ -203,9 +219,7 @@ def run(config_filepath, h5_filepath, num_epochs = 10):
     jet_inputs, track_inputs, targets = get_dataset(h5_filepath, config, mask_value)
     model.fit([jet_inputs, track_inputs], targets, epochs=num_epochs)
     inputs = get_inputs(config['jetfeatnames'], config['trackfeatnames'])
-    save_model(model, inputs=inputs, output_dir=Path('outputs'))
-
-# %%
+    save_model(model, inputs=inputs, output_dir=Path(OUTPUT_FILEPATH))
 BEGIN = time.time()
 print(f"[{datetime.datetime.now().strftime(f'%H:%M:%S')}] Start", flush=True)
 
