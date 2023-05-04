@@ -58,6 +58,7 @@ import warnings
 
 # %%
 np.random.seed(2023)
+keras.utils.set_random_seed(2023)
 
 # Set these manually to run either in the notebook
 NOTEBOOK_TRAIN = False
@@ -142,8 +143,6 @@ def get_model(config, mask_value):
     model = keras.Model(
         inputs=[jet_inputs, track_inputs],
         outputs=outputs)
-    # print the summary
-    # model.summary()
     model.compile(optimizer=keras.optimizers.Adam(),
                   loss=gaussian_loss)
     return model
@@ -249,9 +248,14 @@ def run(config_filepath, h5_filepath, num_epochs = 10):
     if TRAIN:
         print()
         print(f"----- Training Model: {model_name} -----", end="\n\n", flush=True)
+        stopping_callback = keras.callbacks.EarlyStopping(monitor='loss',
+                                                        patience=10,
+                                                        verbose=1,
+                                                        start_from_epoch=100)
         model.fit([jet_inputs_train, track_inputs_train], targets_train,
                 batch_size=config["batch_size"],
-                epochs=config["num_epochs"])
+                epochs=num_epochs,
+                callbacks=[stopping_callback])
         inputs = get_inputs(config['jetfeatnames'], config['trackfeatnames'])
         save_model(model, inputs=inputs, output_dir=Path(OUTPUT_FILEPATH))
     else:
@@ -285,7 +289,7 @@ def run(config_filepath, h5_filepath, num_epochs = 10):
 BEGIN = time.time()
 print(f"[{datetime.datetime.now().strftime(f'%H:%M:%S')}] Start", flush=True)
 
-run(CONFIG_FILEPATH, DATA_FILEPATH)
+run(CONFIG_FILEPATH, DATA_FILEPATH, num_epochs=1000)
 
 print(f"[{datetime.datetime.now().strftime(f'%H:%M:%S')}]", end=" ")
 print(f"Runtime: {round(time.time() - BEGIN, 3)}s", flush=True)
