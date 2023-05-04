@@ -61,7 +61,7 @@ np.random.seed(2023)
 keras.utils.set_random_seed(2023)
 
 # Set these manually to run either in the notebook
-NOTEBOOK_TRAIN = False
+NOTEBOOK_TRAIN = True
 NOTEBOOK_EVAL = True
 
 # DATA_FILEPATH = "./data/data.h5"
@@ -249,9 +249,8 @@ def run(config_filepath, h5_filepath, num_epochs = 10):
         print()
         print(f"----- Training Model: {model_name} -----", end="\n\n", flush=True)
         stopping_callback = keras.callbacks.EarlyStopping(monitor='loss',
-                                                        patience=10,
-                                                        verbose=1,
-                                                        start_from_epoch=100)
+                                                          patience=10,
+                                                          verbose=1)
         model.fit([jet_inputs_train, track_inputs_train], targets_train,
                 batch_size=config["batch_size"],
                 epochs=num_epochs,
