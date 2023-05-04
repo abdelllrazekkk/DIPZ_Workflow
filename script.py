@@ -143,7 +143,7 @@ def get_model(config, mask_value):
         inputs=[jet_inputs, track_inputs],
         outputs=outputs)
     # print the summary
-    model.summary()
+    # model.summary()
     model.compile(optimizer=keras.optimizers.Adam(),
                   loss=gaussian_loss)
     return model
@@ -247,6 +247,8 @@ def run(config_filepath, h5_filepath, num_epochs = 10):
         split_data(jet_inputs, track_inputs, targets)
     
     if TRAIN:
+        print()
+        print(f"----- Training Model: {model_name} -----", end="\n\n", flush=True)
         model.fit([jet_inputs_train, track_inputs_train], targets_train,
                 batch_size=config["batch_size"],
                 epochs=config["num_epochs"])
@@ -256,16 +258,28 @@ def run(config_filepath, h5_filepath, num_epochs = 10):
         model.load_weights(Path(OUTPUT_FILEPATH) / 'weights.h5')
 
     if EVAL:
+        print()
+        print(f"----- Evaluating Model: {model_name} -----", end="\n\n", flush=True)
         # Using RMSE for now
         pred = model.predict([jet_inputs_test, track_inputs_test])
         z = pred[:,0]
         zhat = targets_test[:,0]
 
         # Not sure what to do with these
-        # widths = np.sqrt(np.exp(-pred[:,1])) # Standard deviation
-        # sigma = (z - zhat) / widths
-        result = K.sqrt(K.mean(K.square(z - zhat))).numpy()
-        print(f"RMSE of predictions: {str(round(result, 4))}")
+        sigma = np.sqrt(np.exp(-pred[:,1])) # Standard deviation
+        from scipy.stats import norm
+
+        pdf_score = norm.pdf(z, loc=zhat, scale=sigma)
+        pdf_result = np.mean(pdf_score)
+        print(f"Mean probability density (higher is better): {str(round(pdf_result, 4))}")
+
+        z_score = np.abs(z - zhat) / sigma
+        z_result = np.mean(z_score)
+        print(f"Mean absolute z-score (lower is better): {str(round(z_result, 4))}")
+
+        z_square_score = np.square(z - zhat) / sigma
+        z_square_result = np.mean(z_square_score)
+        print(f"Mean squared difference z-score (lower is better): {str(round(z_square_result, 4))}")
 
 
 BEGIN = time.time()

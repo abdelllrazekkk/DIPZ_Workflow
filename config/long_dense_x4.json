@@ -22,8 +22,8 @@
   , "dphi"
   ]
 
-, "jetnodes" : [ 256 , 256 , 256 , 256 ]
-, "tracknodes" : [ 128 , 128 , 128 , 128 ]
+, "jetnodes" : [ 32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 , 32 ]
+, "tracknodes" : [ 16 , 16 , 16 , 16 , 16 , 16 , 16 , 16 , 16 , 16 , 16 , 16 , 16 , 16 , 16 , 16 ]
 
 , "lr" : 1e-4
 , "outdir" : "tb"
@@ -31,7 +31,7 @@
 
 , "batch_size" : 32
 , "epoch_size" : 2048
-, "num_epochs" : 10
+, "num_epochs" : 100
 , "fnames" : ["./data/user.viruelas.26543689._000001.output.h5"]
 , "valid_fnames" : ["./data/user.viruelas.26543689._000002.output.h5"]
 }

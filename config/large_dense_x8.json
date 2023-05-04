@@ -22,8 +22,8 @@
   , "dphi"
   ]
 
-, "jetnodes" : [ 32 , 32 , 32 , 32 ]
-, "tracknodes" : [ 16 , 16 , 16 , 16 ]
+, "jetnodes" : [ 256 , 256 , 256 , 256 ]
+, "tracknodes" : [ 128 , 128 , 128 , 128 ]
 
 , "lr" : 1e-4
 , "outdir" : "tb"
