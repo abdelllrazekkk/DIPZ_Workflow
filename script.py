@@ -249,7 +249,7 @@ def run(config_filepath, h5_filepath, num_epochs = 10):
         print()
         print(f"----- Training Model: {model_name} -----", end="\n\n", flush=True)
         stopping_callback = keras.callbacks.EarlyStopping(monitor='loss',
-                                                          patience=10,
+                                                          patience=20,
                                                           verbose=1)
         model.fit([jet_inputs_train, track_inputs_train], targets_train,
                 batch_size=config["batch_size"],
