@@ -1,0 +1,9 @@
+sbatch sbatch/large_dense_x2.sbatch;
+sbatch sbatch/large_dense_x4.sbatch;
+sbatch sbatch/large_dense_x8.sbatch;
+sbatch sbatch/long_dense_x2.sbatch;
+sbatch sbatch/long_dense_x3.sbatch;
+sbatch sbatch/long_dense_x4.sbatch;
+sbatch sbatch/regress.sbatch;
+sbatch sbatch/scale_dense_dec.sbatch;
+sbatch sbatch/scale_dense_inc.sbatch;
