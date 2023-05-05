@@ -276,13 +276,8 @@ def run(config_filepath, h5_filepath, num_epochs = 10):
         pdf_result = np.mean(pdf_score)
         print(f"Mean probability density (higher is better): {str(round(pdf_result, 4))}")
 
-        z_score = np.abs(z - zhat) / sigma
-        z_result = np.mean(z_score)
-        print(f"Mean absolute z-score (lower is better): {str(round(z_result, 4))}")
-
-        z_square_score = np.square(z - zhat) / sigma
-        z_square_result = np.mean(z_square_score)
-        print(f"Mean squared difference z-score (lower is better): {str(round(z_square_result, 4))}")
+        rmse = np.sqrt(np.mean(np.square(z - zhat)))
+        print(f"Root Mean Square Error (lower is better): {str(round(rmse, 4))}")
 
 
 BEGIN = time.time()
