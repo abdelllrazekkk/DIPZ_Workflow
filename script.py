@@ -277,7 +277,7 @@ def run(config_filepath, h5_filepath, num_epochs = 10):
         print(f"Mean probability density (higher is better): {str(round(pdf_result, 4))}")
 
         rmse = np.sqrt(np.mean(np.square(z - zhat)))
-        print(f"Root Mean Square Error (lower is better): {str(round(rmse, 4))}")
+        print(f"RMSE (lower is better): {str(round(rmse, 4))}")
 
 
 BEGIN = time.time()

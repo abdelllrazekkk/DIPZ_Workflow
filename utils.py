@@ -64,7 +64,7 @@ def gaussian_loss(targ, pred):
     """
     z = pred[:,0:1]
     q = pred[:,1:2]
-    loss = -q + K.square(z - targ) * K.exp(q)
+    loss = K.log(2 * np.pi) - (q/2) + 0.5 * K.square(z - targ) * K.exp(q)
     return loss
 
 def get_gaussian_loss_prec(epsilon):
