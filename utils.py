@@ -3,9 +3,7 @@
 import numpy as np
 from tensorflow.keras.layers import Layer
 from tensorflow.keras import backend as K
-import numpy as np
 import tensorflow.keras as keras
-from tensorflow.keras import backend as K
 import tensorflow as tf
 from tensorflow.keras.layers import (
     Dense, TimeDistributed, Input, Concatenate, Masking
@@ -64,7 +62,7 @@ def gaussian_loss(targ, pred):
     """
     z = pred[:,0:1]
     q = pred[:,1:2]
-    loss = -q + K.square(z - targ) * K.exp(q)
+    loss = K.log(2*np.pi) - 0.5 * q + 0.5 * K.square(z - targ) * K.exp(q)
     return loss
 
 def get_gaussian_loss_prec(epsilon):
