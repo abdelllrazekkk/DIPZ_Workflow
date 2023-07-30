@@ -1,0 +1,10 @@
+/cm/local/apps/slurm/var/spool/job3186661/slurm_script: line 16: conda: command not found
+/cm/local/apps/slurm/var/spool/job3186661/slurm_script: line 17: conda: command not found
+Traceback (most recent call last):
+  File "/users/maboelela/Research/Qualification_Task/DIPZ_Workflow/2ooAllhighest_dist/run_and_save.py", line 10, in <module>
+    from h5py import File
+ModuleNotFoundError: No module named 'h5py'
+
+real	0m0.066s
+user	0m0.049s
+sys	0m0.016s
