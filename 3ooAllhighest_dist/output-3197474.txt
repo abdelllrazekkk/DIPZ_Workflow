@@ -1,0 +1,21 @@
+The number of jets in the sample is: 279265
+The number of jets in the sample with pT < 20 GeV is: 0
+The number of jets in the sample with eta > 2.5 GeV is: 0
+The number of events in our sample is: 49978
+The number of four or more jet events in the sample is: 40327
+The number of four or more jet events in the sample is less than the provided number, therefore all the sample was run over.
+The time of execution of the (get_max_log_likelihood_dist) function for the (../../jz3.h5) file is : 151.73715773423513 min
+The number of jets in the sample is: 316174
+The number of jets in the sample with pT < 20 GeV is: 0
+The number of jets in the sample with eta > 2.5 GeV is: 0
+The number of events in our sample is: 50000
+The number of four or more jet events in the sample is: 44342
+The number of four or more jet events in the sample is less than the provided number, therefore all the sample was run over.
+The time of execution of the (get_max_log_likelihood_dist) function for the (../../jz4.h5) file is : 176.27957648038864 min
+The number of jets in the sample is: 331308
+The number of jets in the sample with pT < 20 GeV is: 0
+The number of jets in the sample with eta > 2.5 GeV is: 0
+The number of events in our sample is: 50000
+The number of four or more jet events in the sample is: 45428
+The number of four or more jet events in the sample is less than the provided number, therefore all the sample was run over.
+The time of execution of the (get_max_log_likelihood_dist) function for the (../../jz5.h5) file is : 185.20384026368458 min
