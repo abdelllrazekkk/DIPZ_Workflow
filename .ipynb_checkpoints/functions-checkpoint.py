@@ -97,6 +97,7 @@ def get_max_log_likelihood_dist(name, comb_num, num=999999999999999 ,num_highest
     start = time.time()
     data = File(name, 'r')
     jets = data['jets']
+    jets = np.asarray(jets)
     uniques = np.unique(jets["eventNumber"])
     
     print("The number of jets in the sample is: " + str(len(jets)))
@@ -131,6 +132,7 @@ def get_max_log_likelihood_dist_hh4b(name, comb_num, num=999999999999999, num_hi
     start = time.time()
     data = File(name, 'r')
     jets = data['jets']
+    jets = np.asarray(jets)
     uniques = np.unique(jets["eventNumber"])
     
     print("The number of jets in the sample is: " + str(len(jets)))

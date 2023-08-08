@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH -J get_leading_pt_dist       # job name to display in squeue
+#SBATCH -J get_dists.py       # job name to display in squeue
 #SBATCH -o output-%j.txt    # standard output file
 #SBATCH -e error-%j.txt     # standard error file
 #SBATCH -p htc      # requested partition
@@ -16,4 +16,4 @@ module purge
 eval "$(conda shell.bash hook)"
 conda activate /lustre/work/client/users/maboelela/.conda/envs/dipz
 
-time python get_leading_pt_dist.py -t -e
+time python get_dists.py -t -e
