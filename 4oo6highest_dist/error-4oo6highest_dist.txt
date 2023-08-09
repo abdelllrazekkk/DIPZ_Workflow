@@ -1,0 +1,5 @@
+slurmstepd: error: *** JOB 3287523 ON c008 CANCELLED AT 2023-08-08T15:09:14 ***
+
+real	6m14.943s
+user	6m14.270s
+sys	0m0.204s

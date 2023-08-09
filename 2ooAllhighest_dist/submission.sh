@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #SBATCH -J 2ooAllhighest_dist       # job name to display in squeue
-#SBATCH -o output-%j.txt    # standard output file
-#SBATCH -e error-%j.txt     # standard error file
+#SBATCH -o output-2ooAllhighest_dist.txt    # standard output file
+#SBATCH -e error-2ooAllhighest_dist.txt     # standard error file
 #SBATCH -p htc      # requested partition
 #SBATCH --mem=500G          # Total memory required
 #SBATCH -t 1400              # maximum runtime in minutes

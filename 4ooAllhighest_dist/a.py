@@ -1,6 +1,5 @@
 #Utilities to be used in the mlpl functions
 from h5py import File
-import matplotlib.pyplot as plt
 import numpy as np
 import itertools as it
 import time
@@ -96,6 +95,7 @@ def get_max_log_likelihood_dist(name, comb_num, num=999999999999999 ,num_highest
     start = time.time()
     data = File(name, 'r')
     jets = data['jets']
+    jets = np.asarray(jets)
     uniques = np.unique(jets["eventNumber"])
     
     print("The number of jets in the sample is: " + str(len(jets)))
@@ -104,32 +104,27 @@ def get_max_log_likelihood_dist(name, comb_num, num=999999999999999 ,num_highest
     print("The number of events in our sample is: " + str(len(uniques)))
     
     max_log_likelihood_list = []
-    jet_multiplicities = []
     no_of_processed_events = num
     counter = 0
 
     for id in uniques:
-        jet_multiplicities.append(len(jets[jets["eventNumber"] == id]))
         if len(jets[jets["eventNumber"] == id]) >= 4:
             max_log_likelihood_list.append(get_max_log_likelihood_an(id,jets,comb_num,num_highest_pt))
             counter +=1
-        if counter == no_of_processed_events:
-            break
 
-    if counter == no_of_processed_events:
-        print("The provided number of four or more jet events in the sample was run over and it is: " + str(num))
     if counter != no_of_processed_events:
         print("The number of four or more jet events in the sample is: " + str(counter))
         print("The number of four or more jet events in the sample is less than the provided number, therefore all the sample was run over.")
     end = time.time()
     print("The time of execution of the (get_max_log_likelihood_dist) function for the (" + name + ") file is :", ((end-start) / 60) , "min")
 
-    return max_log_likelihood_list, jet_multiplicities
+    return max_log_likelihood_list
 
 def get_max_log_likelihood_dist_hh4b(name, comb_num, num=999999999999999, num_highest_pt=555555):
     start = time.time()
     data = File(name, 'r')
     jets = data['jets']
+    jets = np.asarray(jets)
     uniques = np.unique(jets["eventNumber"])
     
     print("The number of jets in the sample is: " + str(len(jets)))
@@ -139,12 +134,10 @@ def get_max_log_likelihood_dist_hh4b(name, comb_num, num=999999999999999, num_hi
     
     max_log_likelihood_list = []
     num_bjets_chosen_list = []
-    jet_multiplicities = []
     no_of_processed_events = num
     counter = 0
 
     for id in uniques:
-        jet_multiplicities.append(len(jets[jets["eventNumber"] == id]))
         event_jets = jets[jets["eventNumber"] == id]
         bjets = event_jets[event_jets["HadronConeExclTruthLabelID"] == 5]
         if len(event_jets) >= 4 & len(bjets) >= 4:
@@ -152,15 +145,11 @@ def get_max_log_likelihood_dist_hh4b(name, comb_num, num=999999999999999, num_hi
             max_log_likelihood_list.append(max_log_likelihood)
             num_bjets_chosen_list.append(num_bjets_chosen)
             counter +=1
-        if counter == no_of_processed_events:
-            break
 
-    if counter == no_of_processed_events:
-        print("The provided number of four or more b-jet events in the sample was run over and it is: " + str(num))
     if counter != no_of_processed_events:
         print("The number of four or more b-jet events in the sample is: " + str(counter))
         print("The number of four or more b-jet events in the sample is less than the provided number, therefore all the sample was run over.")
     end = time.time()
     print("The time of execution of the (get_max_log_likelihood_dist) function is :", ((end-start) / 60) , "min")
 
-    return max_log_likelihood_list, jet_multiplicities, num_bjets_chosen_list
+    return max_log_likelihood_list, num_bjets_chosen_list

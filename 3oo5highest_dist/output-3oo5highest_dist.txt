@@ -1,0 +1,56 @@
+The number of jets in the sample is: 143465
+The number of jets in the sample with pT < 20 GeV is: 0
+The number of jets in the sample with eta > 2.5 GeV is: 0
+The number of events in our sample is: 40832
+The number of four or more jet events in the sample is: 17613
+The number of four or more jet events in the sample is less than the provided number, therefore all the sample was run over.
+The time of execution of the (get_max_log_likelihood_dist) function for the (../../EBdata.h5) file is : 0.25785619020462036 min
+The number of jets in the sample is: 324069
+The number of jets in the sample with pT < 20 GeV is: 0
+The number of jets in the sample with eta > 2.5 GeV is: 0
+The number of events in our sample is: 49989
+The number of four or more b-jet events in the sample is: 19804
+The number of four or more b-jet events in the sample is less than the provided number, therefore all the sample was run over.
+The time of execution of the (get_max_log_likelihood_dist) function is : 0.8817204276720683 min
+The number of jets in the sample is: 116136
+The number of jets in the sample with pT < 20 GeV is: 0
+The number of jets in the sample with eta > 2.5 GeV is: 0
+The number of events in our sample is: 39883
+The number of four or more jet events in the sample is: 11480
+The number of four or more jet events in the sample is less than the provided number, therefore all the sample was run over.
+The time of execution of the (get_max_log_likelihood_dist) function for the (../../jz0.h5) file is : 0.1904197613398234 min
+The number of jets in the sample is: 168465
+The number of jets in the sample with pT < 20 GeV is: 0
+The number of jets in the sample with eta > 2.5 GeV is: 0
+The number of events in our sample is: 46842
+The number of four or more jet events in the sample is: 19947
+The number of four or more jet events in the sample is less than the provided number, therefore all the sample was run over.
+The time of execution of the (get_max_log_likelihood_dist) function for the (../../jz1.h5) file is : 0.35247325897216797 min
+The number of jets in the sample is: 229572
+The number of jets in the sample with pT < 20 GeV is: 0
+The number of jets in the sample with eta > 2.5 GeV is: 0
+The number of events in our sample is: 49717
+The number of four or more jet events in the sample is: 31744
+The number of four or more jet events in the sample is less than the provided number, therefore all the sample was run over.
+The time of execution of the (get_max_log_likelihood_dist) function for the (../../jz2.h5) file is : 0.6037757396697998 min
+The number of jets in the sample is: 279265
+The number of jets in the sample with pT < 20 GeV is: 0
+The number of jets in the sample with eta > 2.5 GeV is: 0
+The number of events in our sample is: 49978
+The number of four or more jet events in the sample is: 40327
+The number of four or more jet events in the sample is less than the provided number, therefore all the sample was run over.
+The time of execution of the (get_max_log_likelihood_dist) function for the (../../jz3.h5) file is : 0.8997631231943767 min
+The number of jets in the sample is: 316174
+The number of jets in the sample with pT < 20 GeV is: 0
+The number of jets in the sample with eta > 2.5 GeV is: 0
+The number of events in our sample is: 50000
+The number of four or more jet events in the sample is: 44342
+The number of four or more jet events in the sample is less than the provided number, therefore all the sample was run over.
+The time of execution of the (get_max_log_likelihood_dist) function for the (../../jz4.h5) file is : 1.1290781140327453 min
+The number of jets in the sample is: 331308
+The number of jets in the sample with pT < 20 GeV is: 0
+The number of jets in the sample with eta > 2.5 GeV is: 0
+The number of events in our sample is: 50000
+The number of four or more jet events in the sample is: 45428
+The number of four or more jet events in the sample is less than the provided number, therefore all the sample was run over.
+The time of execution of the (get_max_log_likelihood_dist) function for the (../../jz5.h5) file is : 1.2696554700533549 min
