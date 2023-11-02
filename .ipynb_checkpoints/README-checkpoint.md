@@ -1,3 +1,4 @@
 # DIPZ Workflow
 
-This is a repository to version control my local testing work on my qualification task
+This is a repository that maintains version control for the DIPZ Project
+
