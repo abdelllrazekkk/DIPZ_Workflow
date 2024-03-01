@@ -1,7 +1,3 @@
-# DIPZ Workflow
+# The Obsolete Version of The DIPZ Project
 
-This is a repository that maintains version control for the DIPZ Project
-
-For more details and information about DIPZ, please consult: https://cds.cern.ch/record/2875273/
-
-For an questions or comments, please contact: mo.abdellrazekk@cern.ch
+Please check the following link for the new version: https://gitlab.cern.ch/maboelel/the_DIPZ_project
